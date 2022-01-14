@@ -1,17 +1,15 @@
-﻿using RestaurantSimulatorMVC.Enums;
-using RestaurantSimulatorMVC.Factories;
+﻿using RestaurantSimulatorMVC.Factories.Interfaces;
 using RestaurantSimulatorMVC.Markers;
-using RestaurantSimulatorMVC.Views;
-using System.Collections.Generic;
+using RestaurantSimulatorMVC.Spawners.Interfaces;
 using UnityEngine;
 using Zenject;
 
 namespace RestaurantSimulatorMVC.Spawners
 {
-    public class FurnitureSpawner : MonoBehaviour, IFurnitureSpawner
+    public class FurnitureSpawner : MonoBehaviour, IInitializeSpawner
     {
         [SerializeField]
-        private List<FurnitureMarker> _markers;
+        private FurnitureMarker[] _markers;
         private IFurnitureFactory _furnitureFactory;
 
         [Inject]
@@ -23,10 +21,8 @@ namespace RestaurantSimulatorMVC.Spawners
 
         public void SpawnAll()
         {
-            _markers.ForEach(m =>
-                _furnitureFactory.Create(m.FurnitureType,
-                    m.transform.position,
-                    m.transform.parent));
+            foreach (var marker in _markers)
+                _furnitureFactory.Create(marker.FurnitureType, marker.transform.position, marker.transform.parent);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using RestaurantSimulatorMVC.Enums;
+using RestaurantSimulatorMVC.Factories.Interfaces;
 using RestaurantSimulatorMVC.Views;
 using UnityEngine;
 using Zenject;

@@ -1,7 +1,7 @@
 ﻿using RestaurantSimulatorMVC.Enums;
 using UnityEngine;
 
-namespace RestaurantSimulatorMVC.Factories
+namespace RestaurantSimulatorMVC.Factories.Interfaces
 {
     public interface IFurnitureFactory
     {
